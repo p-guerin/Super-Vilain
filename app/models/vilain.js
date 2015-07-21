@@ -11,10 +11,10 @@ var VilainSchema = new Schema({
 
 var Vilain = mongoose.model('Vilain', VilainSchema);
 
-var darth_vador = new Vilain({
-  nom : "Darth Vador",
-  puissance : 10
-});
-darth_vador.save(function(err, vilain){
-  console.log(vilain);
-});
+
+exports.vilains = function(callback) {  
+  Vilain.find(function(err, vilains) {
+    callback("Vilains !", vilains);
+  });
+};
+
